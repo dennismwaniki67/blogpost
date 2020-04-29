@@ -28,6 +28,11 @@ def index():
 def about():
     return render_template('about.html', title='About')
 
+@app.route("/register")
+def register():
+    form=RegistrationForm()
+    return render_template('register.html',title='Register',form=form)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
