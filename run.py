@@ -1,5 +1,6 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for,flash,redirect
 app = Flask(__name__)
+app.config['SECRET_KEY']='0729994042'
 
 posts = [
     {
