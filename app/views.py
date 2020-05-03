@@ -2,10 +2,11 @@ import os
 import secrets
 from PIL import Image
 from flask import render_template, url_for, flash, redirect, request, abort
-from app import app, db, bcrypt
-from app.forms import RegistrationForm, LoginForm, UpdateAccountForm, PostForm,CommentForm,RequestResetForm, ResetPasswordForm
-from app.models import User, Post,Comment
+from app import app, db, bcrypt,mail
+from app.forms import RegistrationForm, LoginForm, UpdateAccountForm, PostForm,RequestResetForm, ResetPasswordForm
+from app.models import User, Post
 from flask_login import login_user, current_user, logout_user, login_required
+from flask_mail import Message
 
 
 @app.route("/")
@@ -107,17 +108,10 @@ def new_post():
                            form=form, legend='New Post')
 
 
-@app.route("/post/<int:post_id>", methods=['GET', 'POST'])
+@app.route("/post/<int:post_id>")
 def post(post_id):
     post = Post.query.get_or_404(post_id)
-    form = CommentForm()
-    if form.validate_on_submit():
-        comment = Comment(content=form.content.data)
-        db.session.add(comment)
-        db.session.commit()
-        flash('Your comment has been posted!', 'success')
-        return redirect(url_for('home'))
-    return render_template('post.html', title=post.title, post=post,form=form)
+    return render_template('post.html', title=post.title, post=post)
 
 
 @app.route("/post/<int:post_id>/update", methods=['GET', 'POST'])
@@ -151,6 +145,7 @@ def delete_post(post_id):
     flash('Your post has been deleted!', 'success')
     return redirect(url_for('home'))
 
+
 @app.route("/user/<string:username>")
 def user_posts(username):
     page = request.args.get('page', 1, type=int)
@@ -160,17 +155,17 @@ def user_posts(username):
         .paginate(page=page, per_page=5)
     return render_template('user_posts.html', posts=posts, user=user)
 
+
 def send_reset_email(user):
     token = user.get_reset_token()
     msg = Message('Password Reset Request',
-                  sender='noreply@demo.com',
+                  sender='dennismahugu91@gmail.com',
                   recipients=[user.email])
     msg.body = f'''To reset your password, visit the following link:
 {url_for('reset_token', token=token, _external=True)}
 If you did not make this request then simply ignore this email and no changes will be made.
 '''
     mail.send(msg)
-
 
 
 @app.route("/reset_password", methods=['GET', 'POST'])
