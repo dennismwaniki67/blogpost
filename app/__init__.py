@@ -6,8 +6,8 @@ from flask_login import LoginManager
 from flask_mail import Mail
 
 app = Flask(__name__)
-app.config['SECRET_KEY']='6b5818f5898dfa22b76c422a8d5dbe4'
-app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///site.db'
+app.config['SECRET_KEY'] = '6b5818f5898dfa22b76c422a8d5dbe4'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 login_manager = LoginManager(app)
