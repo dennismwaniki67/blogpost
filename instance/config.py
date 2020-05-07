@@ -1,2 +1,3 @@
-SECRET_KEY='6b5818f5898dfa22b76c422a8d5dbe4'
+url = "http://quotes.stormconsultancy.co.uk/random.json"
+SECRET_KEY='0729994042'
 SQLALCHEMY_DATABASE_URI='sqlite:///site.db'

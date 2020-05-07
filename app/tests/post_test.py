@@ -6,10 +6,10 @@ from app import db
 class PostModelTest(unittest.TestCase):
 
     def setUp(self):
-        self.user_Dennis = User(
-            username="Dennis", password="1234", email="dennismwaniki67@gmail.com")
+        self.user_Betty = User(
+            username="Betty", password="1234", email="betty75@gmail.com")
         self.new_post = Post(
-            title="code", body="coding rocks", user_id=self.user_Dennis.id)
+            title="code", body="coding rocks", user_id=self.user_Betty.id)
 
     def tearDown(self):
         Post.query.delete()
@@ -21,7 +21,7 @@ class PostModelTest(unittest.TestCase):
     def test_check_instance_variables(self):
         self.assertEquals(self.new_post.title, 'code')
         self.assertEquals(self.new_post.body, "coding rocks")
-        self.assertEquals(self.new_post.user_id, self.user_Kevin.id)
+        self.assertEquals(self.new_post.user_id, self.user_abdi.id)
 
     def test_save_blog(self):
         self.new_post.save_post()

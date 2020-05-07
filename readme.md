@@ -1,4 +1,4 @@
-# Pitch
+# Blogpost
 
 ## Author
 
@@ -6,16 +6,16 @@
 
 # Description
 
-This is an application that allows users to sign in or sign up and post one minute pitches.It also allows the to upvote and downvote on different pitches.
+This is an application that allows users to sign in or sign up and post blogs.
 
 ## User Story
 
-- Comment on the different pitches posted py other uses.
-- See the pitches posted by other uses.
-- Vote on s pitch they have viwed by giving it a upvote or a downvote.
+- Comment on the different pitches posts py other uses.
+- See the  posts by other uses.
+- Vote on posts they have viwed by giving it a upvote or a downvote.
 - Register to be allowed to log in to the application
-- View pitches from the different categories.
-- Submit a pitch to a specific category of their choice.
+- View posts from the different categories.
+- Submit a post to a specific category of their choice.
 
 ## BDD
 
